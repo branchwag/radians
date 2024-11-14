@@ -25,13 +25,13 @@ public class App extends JPanel {
         g2d.drawLine(0, height/2, width, height/2);
         g2d.drawLine(width/2, 0, width/2, height);
 
-        g2d.setColor(Color.LIGHT_GRAY);
-        for (int i = width / 4; i < width; i += width / 4) {
-            g2d.drawLine(i, 0, i, height);
-        }
-        for (int i = height / 4; i < height; i += height / 4) {
-            g2d.drawLine(0, i, width, i);
-        }
+        //g2d.setColor(Color.LIGHT_GRAY);
+        //for (int i = width / 4; i < width; i += width / 4) {
+        //    g2d.drawLine(i, 0, i, height);
+        //}
+        //for (int i = height / 4; i < height; i += height / 4) {
+        //    g2d.drawLine(0, i, width, i);
+        //}
 
         g2d.setColor(Color.RED);
         g2d.drawString("I", width / 4, height / 4);
@@ -42,7 +42,6 @@ public class App extends JPanel {
         g2d.drawString("0", width / 2 + 5, height / 2 + 15);
         g2d.drawString("1", width / 2 + 20, height / 2 - 20);
         g2d.drawString("-1", width / 2 - 30, height / 2 - 20);
-        g2d.drawString("1", width / 2 + 20, height / 2 - 20);
     }
 
     public static void main( String[] args )
