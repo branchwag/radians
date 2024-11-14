@@ -1,5 +1,12 @@
 package com.example;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
 public class App extends JPanel {
 
     @Override
@@ -8,7 +15,7 @@ public class App extends JPanel {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setRenderingHint(RenderingHints.Key_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         
         g2d.setColor(Color.BLACK);
 
@@ -42,7 +49,7 @@ public class App extends JPanel {
     {
         JFrame frame = new JFrame("Cartesian Plane");
 
-        CartesianPlane panel = new CartesianPlane();
+        App panel = new App();
 
         frame.setSize(600, 600);
 
