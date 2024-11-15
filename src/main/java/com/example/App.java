@@ -88,7 +88,7 @@ public class App extends JPanel {
             int y = screenY(Math.sin(angle));
             g2d.fillOval(x - 5, y - 5, 10, 10);
             double degrees = angle * (180 / Math.PI);
-            int roundedDegrees = (int) Math.ceil(degrees);
+            int roundedDegrees = (int) Math.round(degrees);
             g2d.drawString(Integer.toString(roundedDegrees), x - 8, y - 8); 
         }
     }
