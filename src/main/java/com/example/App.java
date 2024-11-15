@@ -11,7 +11,8 @@ import java.awt.BasicStroke;
 public class App extends JPanel {
     private static final int SCALE = 200; //pixels per unit
     private static final int DIAMETER = 2 * SCALE;
-    private static final double STEP = Math.PI / 6; // 30 deg
+    private static final double STEP = Math.PI / 6; // 30 deg 
+    private static final double STEP_45 = Math.PI / 4; // 45 deg 
 
     private int screenX(double x) {
         return (int)(getWidth()/2 + x * SCALE);
@@ -86,11 +87,26 @@ public class App extends JPanel {
         for (double angle = 0; angle < 2 * Math.PI; angle += STEP) {
             int x = screenX(Math.cos(angle));
             int y = screenY(Math.sin(angle));
-            g2d.fillOval(x - 5, y - 5, 10, 10);
             double degrees = angle * (180 / Math.PI);
             int roundedDegrees = (int) Math.round(degrees);
+
+            g2d.fillOval(x - 5, y - 5, 10, 10);
             g2d.drawString(Integer.toString(roundedDegrees), x - 8, y - 8); 
+
         }
+
+        for (double angle = 0; angle < 2 * Math.PI; angle += STEP_45) {
+            int x = screenX(Math.cos(angle));
+            int y = screenY(Math.sin(angle));
+            double degrees = angle * (180 / Math.PI);
+            int roundedDegrees = (int) Math.round(degrees);
+
+            if (roundedDegrees % 10 != 0) {
+            g2d.fillOval(x - 5, y - 5, 10, 10);
+            g2d.drawString(Integer.toString(roundedDegrees), x - 8, y - 8); 
+            }
+        }
+    
     }
 
     public static void main( String[] args )
