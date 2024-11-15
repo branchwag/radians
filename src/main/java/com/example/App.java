@@ -10,6 +10,8 @@ import java.awt.BasicStroke;
 
 public class App extends JPanel {
     private static final int SCALE = 200; //pixels per unit
+    private static final int DIAMETER = 2 * SCALE;
+    private static final double STEP = Math.PI / 6; // 30 deg
 
     private int screenX(double x) {
         return (int)(getWidth()/2 + x * SCALE);
@@ -22,11 +24,8 @@ public class App extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         Graphics2D g2d = (Graphics2D) g;
-
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        
 
         int width = getWidth();
         int height = getHeight();
@@ -44,10 +43,9 @@ public class App extends JPanel {
         //    g2d.drawLine(0, i, width, i);
         //}
 
-        int diameter = 2 * SCALE;
         g2d.setColor(Color.BLUE);
         g2d.setStroke(new BasicStroke(1.5f));
-        g2d.drawOval(width/2 - SCALE, height/2 - SCALE, diameter, diameter);
+        g2d.drawOval(width/2 - SCALE, height/2 - SCALE, DIAMETER, DIAMETER);
 
         g2d.setColor(Color.BLACK);
         g2d.setStroke(new BasicStroke(1));
@@ -81,11 +79,20 @@ public class App extends JPanel {
         g2d.drawString("0", width / 2 + 5, height / 2 + 15);
         //g2d.drawString("1", width / 2 + 20, height / 2 - 20);
         //g2d.drawString("-1", width / 2 - 30, height / 2 - 20);
+
+        //degree pts
+        g2d.setColor(Color.BLACK);
+        g2d.setStroke(new BasicStroke(2));
+        for (double angle = 0; angle < 2 * Math.PI; angle += STEP) {
+            int x = screenX(Math.cos(angle));
+            int y = screenY(Math.sin(angle));
+            g2d.fillOval(x - 5, y - 5, 10, 10);
+        }
     }
 
     public static void main( String[] args )
     {
-        JFrame frame = new JFrame("Cartesian Plane");
+        JFrame frame = new JFrame("Radians");
         App panel = new App();
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
