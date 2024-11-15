@@ -105,8 +105,26 @@ public class App extends JPanel {
             g2d.fillOval(x - 5, y - 5, 10, 10);
             g2d.drawString(Integer.toString(roundedDegrees), x - 8, y - 8); 
             }
+
+            int numerator = roundedDegrees;
+            int denominator = 180;
+            int gcd = gcd(numerator, denominator);
+            numerator /= gcd;
+            denominator /= gcd;
+            String radianText = numerator + "π/" + denominator;
+            g2d.drawString(radianText, x - 16, y - 24);
+            
         }
     
+    }
+
+    private static int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 
     public static void main( String[] args )
