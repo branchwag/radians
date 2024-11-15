@@ -9,7 +9,7 @@ import java.awt.RenderingHints;
 import java.awt.BasicStroke;
 
 public class App extends JPanel {
-    private static final int SCALE = 100; //pixels per unit
+    private static final int SCALE = 200; //pixels per unit
 
     private int screenX(double x) {
         return (int)(getWidth()/2 + x * SCALE);
@@ -73,10 +73,10 @@ public class App extends JPanel {
         }
 
         g2d.setColor(Color.RED);
-        g2d.drawString("I", width / 4, height / 4);
-        g2d.drawString("II", width / 4, height - height / 4);
-        g2d.drawString("III", width - width / 4, height - height / 4);
-        g2d.drawString("IV", width - width / 4, height / 4);
+        g2d.drawString("I", width / 8, height / 8);
+        g2d.drawString("II", width / 8, height - height / 8);
+        g2d.drawString("III", width - width / 8, height - height / 8);
+        g2d.drawString("IV", width - width / 8, height / 8);
 
         g2d.drawString("0", width / 2 + 5, height / 2 + 15);
         //g2d.drawString("1", width / 2 + 20, height / 2 - 20);
